@@ -1,4 +1,5 @@
 use std::process::{Command, exit};
+#[allow(unused_assignments)]
 fn main() {
     let default_str = Command::new("bash").
         arg("-c").
@@ -14,6 +15,7 @@ fn main() {
     else if sink_string.contains("hdmi") {name = "Monitor".to_string();}
     else if sink_string.contains("pci") {name = "Built-in Audio".to_string();}
     else if sink_string.contains("bluez") {name = "Bluetooth".to_string();}
+    else {name = String::from(&sink_string[..4]);}
     println!("|{}|",name);
     exit(0)
 }
